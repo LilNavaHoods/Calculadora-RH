@@ -1,0 +1,49 @@
+1. Baixar o Projeto
+
+- Primeiro, baixe o arquivo .zip do projeto que foi compartilhado.
+- Extraia o arquivo .zip para uma pasta em seu computador.
+2. Instalar o Python
+
+- Certifique-se de que o Python esteja instalado em sua máquina.
+- Para verificar, abra o terminal (ou prompt de comando) e digite:
+  
+  python --version
+  
+- Se o Python não estiver instalado, faça o download e a instalação a partir do [site oficial do Python]
+
+3. Instalar Dependências
+
+- Navegue até a pasta do projeto no terminal (ou prompt de comando):
+  
+  cd caminho/para/a/pasta/do/projeto
+  
+- Instale as dependências necessárias no VSC executando:
+  
+  pip install -r requirements.txt
+  
+
+4. Executar o Projeto
+
+- Para iniciar o projeto, execute o comando abaixo:
+  
+  python app.py
+  
+- O terminal irá mostrar uma mensagem indicando que o servidor está rodando. Normalmente, a mensagem será algo como:
+  
+  Running on http://127.0.0.1:5000/
+  
+
+5. Acessar a Aplicação
+
+- Abra seu navegador de internet e digite o link mostrado pelo terminal (geralmente http\://127.0.0.1:5000/login), alterar com login para rodar, como foi enviado no vídeo na URL
+- A página da aplicação deve carregar e você poderá interagir com o sistema.
+
+6. Possíveis Problemas e Soluções
+
+- Erro de módulo ausente: Se você receber um erro de módulo faltando, certifique-se de que as dependências foram instaladas corretamente. Execute novamente:
+  
+  pip install -r requirements.txt
+  
+- Porta já em uso: Caso apareça um erro dizendo que a porta já está em uso, altere a porta de execução no arquivo app.py para outro número, por exemplo:
+  python
+  app.run(port=5001)

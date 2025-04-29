@@ -1,0 +1,73 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void) {
+
+    double horas = 0, extras = 0, atraso = 0, valorhora, valorhoraextra, min, descontoatraso, liquido = 0, salario=0,taxa=0,aliquota=0,dinss,bonus=0;
+    double fgts=0,descontovavr=0,vavr=0;
+    char continuar, resposta;
+
+    do {
+        printf("\n          Sistema-RH          \n");
+        printf("\nDigite o salario:");
+        scanf("%lf", &salario);
+        printf("\nDigite em horas e min trabalhados:");
+        scanf("%lf", &horas);
+        printf("\nDigite horas e minutos de atrasos:");
+        scanf("%lf", &atraso);
+        printf("\nDigite horas e minutos de extras:");
+        scanf("%lf", &extras);
+     do{   printf("\nDigite a taxa de 50%% a 100%%: %%");
+          scanf("%lf",&taxa);
+       }while(taxa < 50 || taxa > 100);
+        printf("\nDigite a aliquota do INSS:%%");
+        scanf(" %lf",&aliquota);
+        printf("\nDigite bonificação:R$");
+        scanf("%lf",&bonus);
+        printf("\nPossui vale alimentação ou refeição (VA/VR)? (s/n): ");
+    scanf(" %c",&resposta);  
+    // Calcula desconto vale alimentação ou refeição
+    if (resposta == 's' || resposta == 'S') {
+        printf("\nDigite o valor do benefício vale alimentação ou refeição: R$");
+        scanf("%lf", &vavr);
+        descontovavr = (vavr * 20)/100;
+        } else {
+        printf("Não possui vale alimentação ou refeição.\n");
+    }
+        // Calculo do valor por hora trabalhada
+        valorhora = salario / horas;
+        // Cálculo do valor total da hora extra
+        taxa = (taxa*taxa)/100;
+        valorhoraextra = (extras * valorhora) + taxa;
+        // Cálculo do desconto por atrasos
+        min = atraso / 60;
+        descontoatraso = valorhora * atraso;
+        // cálculo do desconto INSS
+        dinss = (salario * aliquota)/100;
+        //calculo de desconto fgts 2024
+        fgts = (salario * 8)/100;
+        // Cálculo do liquido a receber
+        liquido = (salario + valorhoraextra) - (dinss-descontoatraso)+bonus;
+
+        // Exibindo resultados
+        printf("\nvalor da hora: R$%.2lf",valorhora);
+        printf("\nvalor horas extras:+ R$%.2lf",valorhoraextra);
+        if(bonus > 0){
+            printf("\nbonificaçao:+R$%.2lf",bonus);
+        }else
+        printf("\nDesconto dos atrasos: - R$%.2lf",descontoatraso);
+        printf("\nDesconto INSS: - R$%.2lf",dinss);
+        printf("\nDesconto FGTS: - R$%.2lf",fgts);
+        printf("\nDesconto vale alimentação ou refeição: - R$%.2lf\n", descontovavr);
+        printf("\n Liquido a receber: R$%.2lf",liquido);
+
+        getchar();
+        printf("\n\nDeseja realizar outro cálculo? (s/n): ");
+        //Limpar o buffer do teclado
+        continuar = getchar();
+        system("clear");
+
+    } while (continuar == 's' || continuar == 'S');
+
+    return 0;
+}
